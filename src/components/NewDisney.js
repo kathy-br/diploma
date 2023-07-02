@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const NewDisney = (props) => {
   return (
     <Container>
-      <h4>New Disney +</h4>
+      <h4>New to Disney+</h4>
       <Content>
         <Wrap>
           <Link to="/">

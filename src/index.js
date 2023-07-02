@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import * as firebase from "./firebase";
+//import * as firebase from "./firebase";
 /*import { initializeApp } from "firebase/app";
 import styled from "styled-components";
 
