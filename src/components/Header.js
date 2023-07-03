@@ -1,29 +1,17 @@
 import styled from "styled-components";
-//import { auth, provider } from "./firebase";
-import { auth, provider } from "../firebase";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const handleAuth = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
-
   return (
     <Nav>
       <Logo>
         <img src="/images/logo.svg" alt="Disney" />
       </Logo>
       <NavMenu>
-        <a href="/home">
+        <Link to="/home">
           <img src="/images/home-icon.svg" alt="HOME" />
           <span>HOME</span>
-        </a>
+        </Link>
         <a>
           <img src="/images/search-icon.svg" alt="SEARCH" />
           <span>SEARCH</span>
@@ -45,7 +33,7 @@ const Header = (props) => {
           <span>SERIES</span>
         </a>
       </NavMenu>
-      <Login onClick={handleAuth}>Login</Login>
+      <Login>Login</Login>
     </Nav>
   );
 };
