@@ -2,15 +2,27 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import React from "react";
+import Data from "../disneyPlusMoviesData.json";
 
-const Detail = () => {
+const recommendList = [];
+for (let key in Data.movies) {
+  if (Data.movies[key].id === "6") {
+    recommendList.push(Data.movies[key]);
+  }
+}
+
+const Detail = (props) => {
   return (
     <Container>
       <Background>
-        <img alt="" src="../images/slider-scale.jpg" />
+        {recommendList.map((item) => (
+          <img alt={item.title} src={item.backgroundImg} />
+        ))}
       </Background>
       <ImageTitle>
-        <img alt="alt" src="" />
+        {recommendList.map((item) => (
+          <img alt={item.title} src={item.titleImg} />
+        ))}
       </ImageTitle>
       <ContentMeta>
         <Controls>
@@ -32,8 +44,16 @@ const Detail = () => {
             </div>
           </GroupWatch>
         </Controls>
-        <SubTitle>subtitle</SubTitle>
-        <Description>Description</Description>
+        <SubTitle>
+          {recommendList.map((item) => (
+            <h4>{item.subTitle}</h4>
+          ))}
+        </SubTitle>
+        <Description>
+          {recommendList.map((item) => (
+            <h4>{item.description}</h4>
+          ))}
+        </Description>
       </ContentMeta>
     </Container>
   );
