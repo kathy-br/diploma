@@ -1,17 +1,28 @@
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
+import DATA from "../disneyPlusMoviesData.json"
+
+
+const recommendList = []
+for(let key in DATA.movies){
+  if(DATA.movies[key].type === "recommend"){
+    recommendList.push(DATA.movies[key])
+  }
+}
 
 const Recommends = () => {
   return (
     <Container>
       <h4>Recommended for you</h4>
       <Content>
+      {recommendList.map((item)=>(
         <Wrap>
           <Link to="/">
-            <img src="" />
+            <img src={item.cardImg}></img>
           </Link>
         </Wrap>
+      ))}
       </Content>
     </Container>
   );
