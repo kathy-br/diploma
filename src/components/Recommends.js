@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Data from "../disneyPlusMoviesData.json";
+import { useDispatch } from "react-redux";
 
 const recommendList = [];
 for (let key in Data.movies) {
@@ -11,6 +12,18 @@ for (let key in Data.movies) {
 }
 
 const Recommends = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+
+  const detailsFilm = (item)=>{
+    dispatch(
+      {type:"DETAILS_FILM",
+      payload:item
+    }
+    )
+    navigate(`/detail/` + item.title)
+  }
   return (
     <Container>
       <h4>Recommended for you</h4>
@@ -18,9 +31,9 @@ const Recommends = () => {
         {recommendList.map((item, key) => (
           <Wrap key={key}>
             {item.id}
-            <Link to={`/detail/` + item.id}>
+            <button onClick={()=> detailsFilm(item)}>
               <img src={item.cardImg} />
-            </Link>
+            </button>
           </Wrap>
         ))}
       </Content>
