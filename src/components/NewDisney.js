@@ -12,7 +12,7 @@ for (let key in Data.movies) {
 
 const NewDisney = (props) => {
 
-  
+
   return (
     <Container>
       <h4>New to Disney+</h4>
@@ -21,7 +21,7 @@ const NewDisney = (props) => {
           <Wrap key={key}>
             {item.id}
             <Link to={`/detail/` + item.id}>
-
+  
               <img src={item.cardImg} />
             </Link>
           </Wrap>
