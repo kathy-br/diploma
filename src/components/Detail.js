@@ -6,7 +6,7 @@ import Data from "../disneyPlusMoviesData.json";
 
 const recommendList = [];
 for (let key in Data.movies) {
-  if (Data.movies[key].id === "6") {
+  if (Data.movies[key].id === "7") {
     recommendList.push(Data.movies[key]);
   }
 }
