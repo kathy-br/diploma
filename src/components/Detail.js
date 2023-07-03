@@ -3,26 +3,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import React from "react";
 import Data from "../disneyPlusMoviesData.json";
-
-const recommendList = [];
-for (let key in Data.movies) {
-  if (Data.movies[key].id === "7") {
-    recommendList.push(Data.movies[key]);
-  }
-}
+import { useSelector } from "react-redux";
 
 const Detail = (props) => {
+  const detailsList = useSelector((state) => state.details[0]);
+  console.log(detailsList);
+
   return (
     <Container>
       <Background>
-        {recommendList.map((item) => (
-          <img alt={item.title} src={item.backgroundImg} />
-        ))}
+        <img alt={detailsList.title} src={detailsList.backgroundImg} />
       </Background>
       <ImageTitle>
-        {recommendList.map((item) => (
-          <img alt={item.title} src={item.titleImg} />
-        ))}
+        <img alt={detailsList.title} src={detailsList.titleImg} />
       </ImageTitle>
       <ContentMeta>
         <Controls>
@@ -45,14 +38,10 @@ const Detail = (props) => {
           </GroupWatch>
         </Controls>
         <SubTitle>
-          {recommendList.map((item) => (
-            <h4>{item.subTitle}</h4>
-          ))}
+          <h4>{detailsList.subTitle}</h4>
         </SubTitle>
         <Description>
-          {recommendList.map((item) => (
-            <h4>{item.description}</h4>
-          ))}
+          <h4>{detailsList.description}</h4>
         </Description>
       </ContentMeta>
     </Container>
